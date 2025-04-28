@@ -1,10 +1,10 @@
 'use strict';
 
-var Buffer = require('safer-buffer').Buffer;
+import { Buffer } from 'safer-buffer';
 
 // == UTF32-LE/BE codec. ==========================================================
 
-exports._utf32 = Utf32Codec;
+export const _utf32 = Utf32Codec;
 
 function Utf32Codec(codecOptions, iconv) {
     this.iconv = iconv;
@@ -12,12 +12,12 @@ function Utf32Codec(codecOptions, iconv) {
     this.isLE = codecOptions.isLE;
 }
 
-exports.utf32le = { type: '_utf32', isLE: true };
-exports.utf32be = { type: '_utf32', isLE: false };
+export const utf32le = { type: '_utf32', isLE: true };
+export const utf32be = { type: '_utf32', isLE: false };
 
 // Aliases
-exports.ucs4le = 'utf32le';
-exports.ucs4be = 'utf32be';
+export const ucs4le = 'utf32le';
+export const ucs4be = 'utf32be';
 
 Utf32Codec.prototype.encoder = Utf32Encoder;
 Utf32Codec.prototype.decoder = Utf32Decoder;
@@ -189,8 +189,8 @@ Utf32Decoder.prototype.end = function() {
 
 // Encoder prepends BOM (which can be overridden with (addBOM: false}).
 
-exports.utf32 = Utf32AutoCodec;
-exports.ucs4 = 'utf32';
+export const utf32 = Utf32AutoCodec;
+export const ucs4 = 'utf32';
 
 function Utf32AutoCodec(options, iconv) {
     this.iconv = iconv;

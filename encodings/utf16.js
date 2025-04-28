@@ -1,11 +1,11 @@
 "use strict";
-var Buffer = require("safer-buffer").Buffer;
+import { Buffer } from 'safer-buffer';
 
 // Note: UTF16-LE (or UCS2) codec is Node.js native. See encodings/internal.js
 
 // == UTF16-BE codec. ==========================================================
 
-exports.utf16be = Utf16BECodec;
+export const utf16be = Utf16BECodec;
 function Utf16BECodec() {
 }
 
@@ -73,7 +73,7 @@ Utf16BEDecoder.prototype.end = function() {
 
 // Encoder uses UTF-16LE and prepends BOM (which can be overridden with addBOM: false).
 
-exports.utf16 = Utf16Codec;
+export const utf16 = Utf16Codec;
 function Utf16Codec(codecOptions, iconv) {
     this.iconv = iconv;
 }

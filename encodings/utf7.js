@@ -1,11 +1,11 @@
 "use strict";
-var Buffer = require("safer-buffer").Buffer;
+import { Buffer } from 'safer-buffer';
 
 // UTF-7 codec, according to https://tools.ietf.org/html/rfc2152
 // See also below a UTF-7-IMAP codec, according to http://tools.ietf.org/html/rfc3501#section-5.1.3
 
-exports.utf7 = Utf7Codec;
-exports.unicode11utf7 = 'utf7'; // Alias UNICODE-1-1-UTF-7
+export const utf7 = Utf7Codec;
+export const unicode11utf7 = 'utf7'; // Alias UNICODE-1-1-UTF-7
 function Utf7Codec(codecOptions, iconv) {
     this.iconv = iconv;
 };
@@ -129,7 +129,7 @@ Utf7Decoder.prototype.end = function() {
 //  * "-&" while in base64 is not allowed.
 
 
-exports.utf7imap = Utf7IMAPCodec;
+export const utf7imap = Utf7IMAPCodec;
 function Utf7IMAPCodec(codecOptions, iconv) {
     this.iconv = iconv;
 };

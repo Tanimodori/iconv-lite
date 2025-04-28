@@ -1,23 +1,11 @@
 "use strict";
 
-// Update this array if you add/rename/remove files in this directory.
-// We support Browserify by skipping automatic module discovery and requiring modules directly.
-var modules = [
-    require("./internal"),
-    require("./utf32"),
-    require("./utf16"),
-    require("./utf7"),
-    require("./sbcs-codec"),
-    require("./sbcs-data"),
-    require("./sbcs-data-generated"),
-    require("./dbcs-codec"),
-    require("./dbcs-data"),
-];
-
-// Put all encoding/alias/codec definitions to single object and export it.
-for (var i = 0; i < modules.length; i++) {
-    var module = modules[i];
-    for (var enc in module)
-        if (Object.prototype.hasOwnProperty.call(module, enc))
-            exports[enc] = module[enc];
-}
+export * as internal from "./internal";
+export * as utf32 from "./utf32";
+export * as utf16 from "./utf16";
+export * as utf7 from "./utf7";
+export * as "sbcs-codec" from "./sbcs-codec";
+export * as "sbcs-data" from "./sbcs-data";
+export * as "sbcs-data-generated" from "./sbcs-data-generated";
+export * as "dbcs-codec" from "./dbcs-codec";
+export * as "dbcs-data" from "./dbcs-data";

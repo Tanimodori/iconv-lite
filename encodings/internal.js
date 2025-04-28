@@ -1,9 +1,11 @@
 "use strict";
-var Buffer = require("safer-buffer").Buffer;
+import { Buffer } from 'safer-buffer';
+// We use node.js internal decoder. Its signature is the same as ours.
+import { StringDecoder } from 'node:string_decoder';
 
 // Export Node.js internal encodings.
 
-module.exports = {
+export default {
     // Encodings
     utf8:   { type: "_internal", bomAware: true},
     cesu8:  { type: "_internal", bomAware: true},
@@ -46,9 +48,6 @@ InternalCodec.prototype.encoder = InternalEncoder;
 InternalCodec.prototype.decoder = InternalDecoder;
 
 //------------------------------------------------------------------------------
-
-// We use node.js internal decoder. Its signature is the same as ours.
-var StringDecoder = require('string_decoder').StringDecoder;
 
 if (!StringDecoder.prototype.end) // Node v0.8 doesn't have this method.
     StringDecoder.prototype.end = function() {};

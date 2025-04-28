@@ -1,10 +1,21 @@
 "use strict";
 
+// TODO: restore lazy-loading of tables
+import EucjpJson from './tables/eucjp.json';
+import Cp936Json from './tables/cp936.json';
+import GbkAddedJson from './tables/gbk-added.json';
+import Gb18030RangesJson from './tables/gb18030-ranges.json';
+import Cp949Json from './tables/cp949.json';
+import Cp950Json from './tables/cp950.json';
+import Big5AddedJson from './tables/big5-added.json';
+import ShiftJisJson from './tables/shiftjis.json';
+
+
 // Description of supported double byte encodings and aliases.
 // Tables are not require()-d until they are needed to speed up library load.
 // require()-s are direct to support Browserify.
 
-module.exports = {
+export default {
     
     // == Japanese/ShiftJIS ====================================================
     // All japanese encodings are based on JIS X set of standards:
@@ -40,7 +51,7 @@ module.exports = {
 
     'shiftjis': {
         type: '_dbcs',
-        table: function() { return require('./tables/shiftjis.json') },
+        table: function() { return ShiftJisJson },
         encodeAdd: {'\u00a5': 0x5C, '\u203E': 0x7E},
         encodeSkipVals: [{from: 0xED40, to: 0xF940}],
     },
@@ -57,7 +68,7 @@ module.exports = {
 
     'eucjp': {
         type: '_dbcs',
-        table: function() { return require('./tables/eucjp.json') },
+        table: function() { return EucjpJson },
         encodeAdd: {'\u00a5': 0x5C, '\u203E': 0x7E},
     },
 
@@ -84,13 +95,13 @@ module.exports = {
     '936': 'cp936',
     'cp936': {
         type: '_dbcs',
-        table: function() { return require('./tables/cp936.json') },
+        table: function() { return Cp936Json },
     },
 
     // GBK (~22000 chars) is an extension of CP936 that added user-mapped chars and some other.
     'gbk': {
         type: '_dbcs',
-        table: function() { return require('./tables/cp936.json').concat(require('./tables/gbk-added.json')) },
+        table: function() { return Cp936Json.concat(GbkAddedJson) },
     },
     'xgbk': 'gbk',
     'isoir58': 'gbk',
@@ -102,8 +113,8 @@ module.exports = {
     // http://www.khngai.com/chinese/charmap/tblgbk.php?page=0
     'gb18030': {
         type: '_dbcs',
-        table: function() { return require('./tables/cp936.json').concat(require('./tables/gbk-added.json')) },
-        gb18030: function() { return require('./tables/gb18030-ranges.json') },
+        table: function() { return Cp936Json.concat(GbkAddedJson) },
+        gb18030: function() { return Gb18030RangesJson },
         encodeSkipVals: [0x80],
         encodeAdd: {'€': 0xA2E3},
     },
@@ -118,7 +129,7 @@ module.exports = {
     '949': 'cp949',
     'cp949': {
         type: '_dbcs',
-        table: function() { return require('./tables/cp949.json') },
+        table: function() { return Cp949Json },
     },
 
     'cseuckr': 'cp949',
@@ -159,14 +170,14 @@ module.exports = {
     '950': 'cp950',
     'cp950': {
         type: '_dbcs',
-        table: function() { return require('./tables/cp950.json') },
+        table: function() { return Cp950Json },
     },
 
     // Big5 has many variations and is an extension of cp950. We use Encoding Standard's as a consensus.
     'big5': 'big5hkscs',
     'big5hkscs': {
         type: '_dbcs',
-        table: function() { return require('./tables/cp950.json').concat(require('./tables/big5-added.json')) },
+        table: function() { return Cp950Json.concat(Big5AddedJson) },
         encodeSkipVals: [
             // Although Encoding Standard says we should avoid encoding to HKSCS area (See Step 1 of
             // https://encoding.spec.whatwg.org/#index-big5-pointer), we still do it to increase compatibility with ICU.
