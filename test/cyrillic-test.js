@@ -1,6 +1,6 @@
 var assert = require('assert'),
     Buffer = require('safer-buffer').Buffer,
-    iconv = require(__dirname+'/../');
+    iconv = require(__dirname+'/../').default;
 
 var baseStrings = {
     empty: "",

@@ -1,8 +1,8 @@
 var fs      = require('fs'),
     assert  = require('assert'),
     Buffer  = require('safer-buffer').Buffer,
-    iconv   = require(__dirname+'/../'),
-    Iconv   = require('iconv').Iconv;
+    iconv   = require(__dirname+'/../').default,
+    Iconv = require('iconv').Iconv;
 
 
 // Make all valid input combinations for a given encoding and call fn with it.

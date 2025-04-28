@@ -1,7 +1,7 @@
 var assert = require('assert'),
     Buffer = require('safer-buffer').Buffer,
     semver = require('semver'),
-    iconv = require(__dirname+'/../');
+    iconv = require(__dirname+'/../').default;
 
 if (!iconv.supportsStreams)
     return;

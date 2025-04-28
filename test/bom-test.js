@@ -1,6 +1,6 @@
 var assert = require('assert'),
     Buffer = require('safer-buffer').Buffer,
-    iconv = require(__dirname+'/../');
+    iconv = require(__dirname+'/../').default;
 
 var sampleStr = '<?xml version="1.0" encoding="UTF-8"?>\n<俄语>данные</俄语>';
     strBOM = '\ufeff',

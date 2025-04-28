@@ -1,6 +1,6 @@
 var assert = require('assert'),
     Buffer = require('safer-buffer').Buffer,
-    iconv = require(__dirname+'/../');
+    iconv = require(__dirname+'/../').default;
 
 var testString = "Hello123!";
 var testStringLatin1 = "Hello123!£Å÷×çþÿ¿®";

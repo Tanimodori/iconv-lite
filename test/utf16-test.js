@@ -1,6 +1,6 @@
 var assert = require('assert'),
     Buffer = require('safer-buffer').Buffer,
-    iconv = require(__dirname+'/../');
+    iconv = require(__dirname+'/../').default;
 
 var testStr = "1aя中文☃💩";
     utf16beBuf = Buffer.from([0, 0x31, 0, 0x61, 0x04, 0x4f, 0x4e, 0x2d, 0x65, 0x87, 0x26, 0x03, 0xd8, 0x3d, 0xdc, 0xa9]),
