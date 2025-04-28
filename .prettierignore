@@ -1,0 +1,4 @@
+encodings/**/*.js
+lib/**/*.js
+test/**/*.js
+**/*.json
